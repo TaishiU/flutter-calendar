@@ -46,8 +46,22 @@ class _HomeScreenState extends State<HomeScreen> {
               headerStyle: HeaderStyle(
                 titleCentered: true,
                 formatButtonVisible: false,
+                leftChevronIcon: Icon(
+                  Icons.chevron_left,
+                  color: Colors.grey.shade400,
+                  size: 35,
+                ),
+                rightChevronIcon: Icon(
+                  Icons.chevron_right,
+                  color: Colors.grey.shade400,
+                  size: 35,
+                ),
+                headerPadding: EdgeInsets.only(top: 10, bottom: 15),
+                leftChevronPadding: EdgeInsets.only(left: 0),
+                rightChevronPadding: EdgeInsets.only(right: 0),
               ),
               calendarStyle: CalendarStyle(
+                outsideDaysVisible: false,
                 todayDecoration: BoxDecoration(
                   color: Colors.orange.shade200,
                   shape: BoxShape.circle,
@@ -56,6 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.orange,
                   shape: BoxShape.circle,
                 ),
+                weekendTextStyle: TextStyle(color: Colors.black),
+              ),
+              daysOfWeekHeight: 20.0,
+              daysOfWeekStyle: DaysOfWeekStyle(
+                weekdayStyle: TextStyle(color: Colors.grey),
+                weekendStyle: TextStyle(color: Colors.grey),
               ),
               onFormatChanged: (CalendarFormat format) {
                 if (_calendarFormat != format) {
@@ -75,7 +95,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     _selectedDay = selectedDay; /*選択された日付*/
                     _focusedDay = focusedDay; /*現在の日付*/
 
-                    // if (selectedDay.difference(DateTime.now()).inDays == 0) {
                     if (isSameDay(selectedDay, DateTime.now())) {
                       _displayDate = '今日';
                     } else {
