@@ -48,6 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 formatButtonVisible: false,
               ),
               calendarStyle: CalendarStyle(
+                todayDecoration: BoxDecoration(
+                  color: Colors.orange.shade200,
+                  shape: BoxShape.circle,
+                ),
                 selectedDecoration: BoxDecoration(
                   color: Colors.orange,
                   shape: BoxShape.circle,
