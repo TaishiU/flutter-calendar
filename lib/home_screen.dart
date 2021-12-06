@@ -94,11 +94,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     _selectedDay = selectedDay; /*選択された日付*/
                     _focusedDay = focusedDay; /*現在の日付*/
+                    // print('selectedDay: $selectedDay');
+                    // print('focusedDay: $focusedDay');
+                    // print('selectedDay: $_selectedDay');
+                    // print('focusedDay: $_focusedDay');
+                    // print('push push push');
 
                     if (isSameDay(selectedDay, DateTime.now())) {
                       _displayDate = '今日';
                     } else {
                       _displayDate = DateFormat.MMMEd('ja').format(selectedDay);
+                      // print('selectedDay: $_selectedDay');
+                      // print('focusedDay: $_focusedDay');
                     }
                   });
                 }
