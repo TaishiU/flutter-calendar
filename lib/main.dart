@@ -23,6 +23,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -108,11 +109,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget getList() {
     var list = [
-      "メッセージ",
-      "メッセージ",
-      "メッセージ",
-      "メッセージ",
-      "メッセージ",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
     ];
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
@@ -139,8 +140,13 @@ class _MyHomePageState extends State<MyHomePage> {
           title,
           style: TextStyle(color: Colors.black, fontSize: 18.0),
         ),
-        onTap: () {
-          print("onTap called.");
+        onTap: () async {
+          final data = ClipboardData(text: title);
+          await Clipboard.setData(data);
+          print(data.text);
+          final snackBar = SnackBar(content: Text('copied!: ${data.text!}'));
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }, // タップ
         onLongPress: () {
           print("onLongTap called.");
@@ -165,8 +171,6 @@ class _UpperPopState extends State<UpperPop> {
 
   @override
   Widget build(BuildContext context) {
-    //print(_displayDate);
-
     return Column(
       children: [
         Container(
@@ -229,8 +233,6 @@ class _UpperPopState extends State<UpperPop> {
                 setState(() {
                   _selectedDay = selectedDay; /*選択された日付*/
                   _focusedDay = focusedDay; /*フォーカスが当たる日*/
-                  print('selectedDay: $selectedDay');
-                  print('focusedDay: $focusedDay');
 
                   if (isSameDay(selectedDay, DateTime.now())) {
                     _displayDate = '今日';
