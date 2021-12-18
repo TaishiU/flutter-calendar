@@ -34,6 +34,7 @@
 import 'package:calender/screens/home_screen.dart';
 import 'package:calender/screens/multi_screen.dart';
 import 'package:calender/screens/range_screen.dart';
+import 'package:calender/screens/shimmer_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,7 +55,7 @@ class _FeedScreenState extends State<FeedScreen> {
         HomeScreen(),
         RangeScreen(),
         MultiScreen(),
-        // MessageScreen(),
+        ShimmerScreen(),
       ].elementAt(_selectedTab),
       bottomNavigationBar: CupertinoTabBar(
         onTap: (index) {
@@ -68,7 +69,7 @@ class _FeedScreenState extends State<FeedScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home)),
           BottomNavigationBarItem(icon: Icon(Icons.circle)),
           BottomNavigationBarItem(icon: Icon(Icons.add)),
-          // BottomNavigationBarItem(icon: Icon(Icons.mail_outline_rounded)),
+          BottomNavigationBarItem(icon: Icon(Icons.star_border)),
         ],
       ),
     );
